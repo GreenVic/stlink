@@ -610,9 +610,20 @@ static const struct stlink_chipid_params devices[] = {
             .bootrom_size = 0x7000
         },
         {
-            // STM32H74x
+            // STM32H743x (1 CORE)
             .chip_id = STLINK_CHIPID_STM32_H7,
-            .description = "H74x",
+            .description = "H74xx (1 CORE)",
+            .flash_type = STLINK_FLASH_TYPE_H7,
+            .flash_size_reg = 0x1ff1e880,          // "Flash size data register" (sec 61.2, page 3272)
+            .flash_pagesize = 0x20000,             // 128k, section 4.3.3, pg 151
+            .sram_size = 0x100000,                 // 1M SRAM
+            .bootrom_base = 0x1fff0000,            // 5.4.1, pg 153
+            .bootrom_size = 0x20000                // 128k (per bank), same source as base (pg 99)
+        },
+        {
+            // STM32H743x (2 CORE)
+            .chip_id = STLINK_CHIPID_STM32_H7_DUALCORE,
+            .description = "H74xx (2 COREs)",
             .flash_type = STLINK_FLASH_TYPE_H7,
             .flash_size_reg = 0x1ff1e880,          // "Flash size data register" (sec 61.2, page 3272)
             .flash_pagesize = 0x20000,             // 128k, section 4.3.3, pg 151
