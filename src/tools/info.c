@@ -101,7 +101,7 @@ static int print_data(int ac, char **av)
         stlink_probe();
         return 0;
     } else if (strcmp(av[1], "--version") == 0) {
-        printf("v%s\n", STLINK_VERSION);
+        printf("v%s for stm32h7\n", STLINK_VERSION);
         return 0;
     }
 

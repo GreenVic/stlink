@@ -93,7 +93,7 @@ int flash_get_opts(struct flash_opts* o, int ac, char** av) {
     int result;
     while (ac >= 1) {
         if (strcmp(av[0], "--version") == 0) {
-            printf("v%s\n", STLINK_VERSION);
+            printf("v%s for stm32h7\n", STLINK_VERSION);
             exit(EXIT_SUCCESS);
         }
         else if (strcmp(av[0], "--debug") == 0) {
