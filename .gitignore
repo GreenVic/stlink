@@ -1,8 +1,8 @@
 cscope.*
 *.app
 *.cmd
+.config
 .config.old
-*.d
 dkms.conf
 *.dll
 *.dSYM/
@@ -44,11 +44,4 @@ tags
 Objects/*
 DebugConfig/*
 RTE/*
-libopencm3/*
-libopencm3
-littlefs/*
-.lock-waf_linux2_build
 build/*
-.waf-*/*
-ax5043/*
-term.sql.db
