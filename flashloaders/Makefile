@@ -9,7 +9,7 @@ CC = /opt/local/gcc-arm-none-eabi-8-2018-q4-major/bin/arm-none-eabi-gcc
 CFLAGS_thumb1 = -mcpu=Cortex-M0  -Tlinker.ld -ffreestanding -nostdlib
 CFLAGS_thumb2 = -mcpu=Cortex-M3  -Tlinker.ld -ffreestanding -nostdlib
 
-all: stm32vl.o stm32f0.o stm32l.o stm32f4.o stm32f4_lv.o stm32l4.o stm32f7.o stm32f7_lv.o
+all: stm32vl.o stm32f0.o stm32l.o stm32f4.o stm32f4_lv.o stm32l4.o stm32f7.o stm32f7_lv.o stm32h7.o stm32h7_lv.o
 
 stm32vl.o: stm32f0.s
 	$(CC) stm32f0.s $(CFLAGS_thumb2)  -o stm32vl.o
@@ -27,6 +27,11 @@ stm32f7.o: stm32f7.s
 	$(CC) stm32f7.s $(CFLAGS_thumb2)  -o stm32f7.o
 stm32f7_lv.o: stm32f7lv.s
 	$(CC) stm32f7lv.s $(CFLAGS_thumb2)  -o stm32f7_lv.o
+
+stm32h7.o: stm32h7.s
+	$(CC) stm32h7.s $(CFLAGS_thumb2)  -o stm32h7.o
+stm32h7_lv.o: stm32h7lv.s
+	$(CC) stm32h7lv.s $(CFLAGS_thumb2)  -o stm32h7_lv.o
 
 clean:
 	rm *.o
