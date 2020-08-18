@@ -18,7 +18,7 @@ int ugly_init(int maximum_threshold) {
     return 0;
 }
 
-int ugly_log(int level, const char *tag, const char *format, ...) {
+int ugly_log(int level, const char *tag, int line, const char *format, ...) {
     if (level > max_level) {
         return 0;
     }
@@ -34,19 +34,19 @@ int ugly_log(int level, const char *tag, const char *format, ...) {
     fprintf(stderr, "%d-%02d-%02dT%02d:%02d:%02d ", tt->tm_year + 1900, tt->tm_mon + 1, tt->tm_mday, tt->tm_hour, tt->tm_min, tt->tm_sec);
     switch (level) {
     case UDEBUG:
-        fprintf(stderr, "DEBUG %s: ", tag);
+        fprintf(stderr, "DEBUG %s.%d: ", tag, line);
         break;
     case UINFO:
-        fprintf(stderr, "INFO %s: ", tag);
+        fprintf(stderr, "INFO %s.%d: ", tag, line);
         break;
     case UWARN:
-        fprintf(stderr, "WARN %s: ", tag);
+        fprintf(stderr, "WARN %s.%d: ", tag, line);
         break;
     case UERROR:
-        fprintf(stderr, "ERROR %s: ", tag);
+        fprintf(stderr, "ERROR %s.%d: ", tag, line);
         break;
     default:
-        fprintf(stderr, "%d %s: ", level, tag);
+        fprintf(stderr, "%d %s.%d: ", level, tag, line);
         break;
     }
     vfprintf(stderr, format, args);
