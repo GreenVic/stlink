@@ -902,17 +902,17 @@ static void wait_flash_busy(stlink_t *sl) {
 
 static void wait_flash_busy_progress(stlink_t *sl) {
     int i = 0;
-    fprintf(stdout, "Mass erasing");
-    fflush(stdout);
+    fprintf(stderr, "Mass erasing");
+    fflush(stderr);
     while (is_flash_busy(sl)) {
         usleep(10000);
         i++;
         if (i % 100 == 0) {
-            fprintf(stdout, ".");
-            fflush(stdout);
+            fprintf(stderr, ".");
+            fflush(stderr);
         }
     }
-    fprintf(stdout, "\n");
+    fprintf(stderr, "\n");
 }
 
 static int check_flash_error(stlink_t *sl)
@@ -2544,7 +2544,7 @@ int stlink_write_flash(stlink_t *sl, stm32_addr_t addr, uint8_t* base, uint32_t 
         for (off = 0; off < len;) {
             size_t size = len - off > buf_size ? buf_size : len - off;
 
-            printf("size: %u\n", (unsigned int)size);
+            fprintf(stderr, "size: %u\n", (unsigned int)size);
 
             if (stlink_flash_loader_run(sl, &fl, addr + (uint32_t) off, base + off, size) == -1) {
                 ELOG("stlink_flash_loader_run(%#zx) failed! == -1\n", addr + off);
