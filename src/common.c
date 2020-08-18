@@ -732,7 +732,7 @@ static void set_flash_cr_mer(stlink_t *sl, bool v) {
         cr_pg = 1 << FLASH_CR_PG;
     } else if (sl->flash_type == STLINK_FLASH_TYPE_L4) {
         cr_reg = STM32L4_FLASH_CR;
-        cr_mer = (1 << STM32L4_FLASH_CR_MER1) | (1 << STM32L4_FLASH_CR_MER2);
+        cr_mer = (1 << STM32L4_FLASH_CR_MER1) /* | (1 << STM32L4_FLASH_CR_MER2) */; /* don't erase L4's bank 2 flash. */
         cr_pg = 1 << STM32L4_FLASH_CR_PG;
     } else if (sl->flash_type == STLINK_FLASH_TYPE_G0 ||
                sl->flash_type == STLINK_FLASH_TYPE_G4) {
