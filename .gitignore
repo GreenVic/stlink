@@ -1,7 +1,6 @@
 cscope.*
 *.app
 *.cmd
-.config
 .config.old
 *.d
 dkms.conf
