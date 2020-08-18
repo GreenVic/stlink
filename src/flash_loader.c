@@ -332,7 +332,6 @@ int stlink_flash_loader_run(stlink_t *sl, flash_loader_t* fl, stm32_addr_t targe
         if (size % sizeof(uint16_t))
             ++count;
     } else if (sl->flash_type == STLINK_FLASH_TYPE_F4 ||
-               sl->flash_type == STLINK_FLASH_TYPE_H7 ||
                sl->flash_type == STLINK_FLASH_TYPE_L0) {
         count = size / sizeof(uint32_t);
         if (size % sizeof(uint32_t))

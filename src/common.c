@@ -970,17 +970,17 @@ static void wait_flash_busy(stlink_t *sl) {
 
 static void wait_flash_busy_progress(stlink_t *sl) {
     int i = 0;
-    fprintf(stderr, "Mass erasing");
-    fflush(stderr);
+    fprintf(stdout, "Mass erasing");
+    fflush(stdout);
     while (is_flash_busy(sl)) {
         usleep(10000);
         i++;
         if (i % 100 == 0) {
-            fprintf(stderr, ".");
-            fflush(stderr);
+            fprintf(stdout, ".");
+            fflush(stdout);
         }
     }
-    fprintf(stderr, "\n");
+    fprintf(stdout, "\n");
 }
 
 static int check_flash_error(stlink_t *sl)
@@ -2610,8 +2610,7 @@ int stlink_write_flash(stlink_t *sl, stm32_addr_t addr, uint8_t* base, uint32_t 
     if (eraseonly)
         return 0;
 
-    if ((sl->flash_type == STLINK_FLASH_TYPE_F4) ||
-	(sl->flash_type == STLINK_FLASH_TYPE_L4)) {
+    if ((sl->flash_type == STLINK_FLASH_TYPE_F4) || (sl->flash_type == STLINK_FLASH_TYPE_L4)) {
         /* todo: check write operation */
 
         ILOG("Starting Flash write for F2/F4/L4\n");
@@ -2643,7 +2642,7 @@ int stlink_write_flash(stlink_t *sl, stm32_addr_t addr, uint8_t* base, uint32_t 
                     return voltage;
                 } else if (voltage > 2700) {
                     printf("enabling 32-bit flash writes\n");
-		    write_flash_cr_psiz(sl, 2);
+                    write_flash_cr_psiz(sl, 2);
                 } else {
                     printf("Target voltage (%d mV) too low for 32-bit flash, using 8-bit flash writes\n", voltage);
                     write_flash_cr_psiz(sl, 0);
