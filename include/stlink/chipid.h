@@ -13,7 +13,6 @@ extern "C" {
 enum stlink_stm32_chipids {
 	STLINK_CHIPID_UNKNOWN                = 0x000,
 
-	STLINK_CHIPID_STM32_H7_DUALCORE      = 0x004,	/* This ID is found on the NucleoH745ZIQ board */
 	STLINK_CHIPID_STM32_F1_MEDIUM        = 0x410,
 	STLINK_CHIPID_STM32_F2               = 0x411,
 	STLINK_CHIPID_STM32_F1_LOW           = 0x412,
@@ -54,7 +53,7 @@ enum stlink_stm32_chipids {
 	STLINK_CHIPID_STM32_L0_CAT5          = 0x447,
 	STLINK_CHIPID_STM32_F0_CAN           = 0x448,
 	STLINK_CHIPID_STM32_F7               = 0x449,	/* This ID is found on the NucleoF746ZG board */
-	STLINK_CHIPID_STM32_H7               = 0x450,	/* This ID is found on the NucleoH743ZI2 board */
+	STLINK_CHIPID_STM32_H7               = 0x450,	/* This ID is found on the NucleoH743ZI2 board and NucleoH745ZIQ board */
 	STLINK_CHIPID_STM32_F7XXXX           = 0x451,
 	STLINK_CHIPID_STM32_F72XXX           = 0x452,	/* This ID is found on the NucleoF722ZE board */
 	STLINK_CHIPID_STM32_L011             = 0x457,
