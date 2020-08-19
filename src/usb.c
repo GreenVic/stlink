@@ -1244,7 +1244,7 @@ static size_t stlink_probe_usb_devs(libusb_device **devs, stlink_t **sldevs[]) {
 
         if (ret < 0) continue;
 
-        stlink_t *sl = stlink_open_usb(0, 1, serial, 0);
+        stlink_t *sl = stlink_open_usb(0, 2, serial, 0); /* connect under jtag reset to get real chipid of STM32H7 DUAL CORE */
         if (!sl) {
             ELOG("Failed to open USB device %#06x:%#06x\n", desc.idVendor, desc.idProduct);
             continue;
