@@ -2667,7 +2667,7 @@ int stlink_write_flash(stlink_t *sl, stm32_addr_t addr, uint8_t* base, uint32_t 
         for (off = 0; off < len;) {
             size_t size = len - off > buf_size ? buf_size : len - off;
 
-            fprintf(stderr, "size: %u\n", (unsigned int)size);
+            fprintf(stderr, "size: %u @ 0x%x\n", (unsigned int)size, (unsigned int)off);
 
             if (stlink_flash_loader_run(sl, &fl, addr + (uint32_t) off, base + off, size) == -1) {
                 ELOG("stlink_flash_loader_run(%#zx) failed! == -1\n", addr + off);
